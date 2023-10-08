@@ -57,6 +57,12 @@ from .const import (
     FITBIT_MEASUREMENTS,
 )
 
+FIRE = "mdi:fire"
+WALK = "mdi:walk"
+HUMAN = "mdi:human"
+SLEEP = "mdi:sleep"
+DEVICES_BATTERY = "devices/batter"
+ 
 _LOGGER: Final = logging.getLogger(__name__)
 
 _CONFIGURING: dict[str, str] = {}
@@ -76,19 +82,19 @@ FITBIT_RESOURCES_LIST: Final[tuple[FitbitSensorEntityDescription, ...]] = (
         key="activities/activityCalories",
         name="Activity Calories",
         native_unit_of_measurement="cal",
-        icon="mdi:fire",
+        icon=FIRE,
     ),
     FitbitSensorEntityDescription(
         key="activities/calories",
         name="Calories",
         native_unit_of_measurement="cal",
-        icon="mdi:fire",
+        icon=FIRE,
     ),
     FitbitSensorEntityDescription(
         key="activities/caloriesBMR",
         name="Calories BMR",
         native_unit_of_measurement="cal",
-        icon="mdi:fire",
+        icon=FIRE,
     ),
     FitbitSensorEntityDescription(
         key="activities/distance",
@@ -101,14 +107,14 @@ FITBIT_RESOURCES_LIST: Final[tuple[FitbitSensorEntityDescription, ...]] = (
         key="activities/elevation",
         name="Elevation",
         unit_type="elevation",
-        icon="mdi:walk",
+        icon=WALK,
         device_class=SensorDeviceClass.DISTANCE,
     ),
     FitbitSensorEntityDescription(
         key="activities/floors",
         name="Floors",
         native_unit_of_measurement="floors",
-        icon="mdi:walk",
+        icon=WALK,
     ),
     FitbitSensorEntityDescription(
         key="activities/heart",
@@ -120,14 +126,14 @@ FITBIT_RESOURCES_LIST: Final[tuple[FitbitSensorEntityDescription, ...]] = (
         key="activities/minutesFairlyActive",
         name="Minutes Fairly Active",
         native_unit_of_measurement=UnitOfTime.MINUTES,
-        icon="mdi:walk",
+        icon=WALK,
         device_class=SensorDeviceClass.DURATION,
     ),
     FitbitSensorEntityDescription(
         key="activities/minutesLightlyActive",
         name="Minutes Lightly Active",
         native_unit_of_measurement=UnitOfTime.MINUTES,
-        icon="mdi:walk",
+        icon=WALK,
         device_class=SensorDeviceClass.DURATION,
     ),
     FitbitSensorEntityDescription(
@@ -148,19 +154,19 @@ FITBIT_RESOURCES_LIST: Final[tuple[FitbitSensorEntityDescription, ...]] = (
         key="activities/steps",
         name="Steps",
         native_unit_of_measurement="steps",
-        icon="mdi:walk",
+        icon=WALK,
     ),
     FitbitSensorEntityDescription(
         key="activities/tracker/activityCalories",
         name="Tracker Activity Calories",
         native_unit_of_measurement="cal",
-        icon="mdi:fire",
+        icon=FIRE,
     ),
     FitbitSensorEntityDescription(
         key="activities/tracker/calories",
         name="Tracker Calories",
         native_unit_of_measurement="cal",
-        icon="mdi:fire",
+        icon=FIRE,
     ),
     FitbitSensorEntityDescription(
         key="activities/tracker/distance",
@@ -173,27 +179,27 @@ FITBIT_RESOURCES_LIST: Final[tuple[FitbitSensorEntityDescription, ...]] = (
         key="activities/tracker/elevation",
         name="Tracker Elevation",
         unit_type="elevation",
-        icon="mdi:walk",
+        icon=WALK,
         device_class=SensorDeviceClass.DISTANCE,
     ),
     FitbitSensorEntityDescription(
         key="activities/tracker/floors",
         name="Tracker Floors",
         native_unit_of_measurement="floors",
-        icon="mdi:walk",
+        icon=WALK,
     ),
     FitbitSensorEntityDescription(
         key="activities/tracker/minutesFairlyActive",
         name="Tracker Minutes Fairly Active",
         native_unit_of_measurement=UnitOfTime.MINUTES,
-        icon="mdi:walk",
+        icon=WALK,
         device_class=SensorDeviceClass.DURATION,
     ),
     FitbitSensorEntityDescription(
         key="activities/tracker/minutesLightlyActive",
         name="Tracker Minutes Lightly Active",
         native_unit_of_measurement=UnitOfTime.MINUTES,
-        icon="mdi:walk",
+        icon=WALK,
         device_class=SensorDeviceClass.DURATION,
     ),
     FitbitSensorEntityDescription(
@@ -214,27 +220,27 @@ FITBIT_RESOURCES_LIST: Final[tuple[FitbitSensorEntityDescription, ...]] = (
         key="activities/tracker/steps",
         name="Tracker Steps",
         native_unit_of_measurement="steps",
-        icon="mdi:walk",
+        icon=WALK,
     ),
     FitbitSensorEntityDescription(
         key="body/bmi",
         name="BMI",
         native_unit_of_measurement="BMI",
-        icon="mdi:human",
+        icon=HUMAN,
         state_class=SensorStateClass.MEASUREMENT,
     ),
     FitbitSensorEntityDescription(
         key="body/fat",
         name="Body Fat",
         native_unit_of_measurement=PERCENTAGE,
-        icon="mdi:human",
+        icon=HUMAN,
         state_class=SensorStateClass.MEASUREMENT,
     ),
     FitbitSensorEntityDescription(
         key="body/weight",
         name="Weight",
         unit_type="weight",
-        icon="mdi:human",
+        icon=HUMAN,
         state_class=SensorStateClass.MEASUREMENT,
         device_class=SensorDeviceClass.WEIGHT,
     ),
@@ -242,41 +248,41 @@ FITBIT_RESOURCES_LIST: Final[tuple[FitbitSensorEntityDescription, ...]] = (
         key="sleep/awakeningsCount",
         name="Awakenings Count",
         native_unit_of_measurement="times awaken",
-        icon="mdi:sleep",
+        icon=SLEEP,
     ),
     FitbitSensorEntityDescription(
         key="sleep/efficiency",
         name="Sleep Efficiency",
         native_unit_of_measurement=PERCENTAGE,
-        icon="mdi:sleep",
+        icon=SLEEP,
         state_class=SensorStateClass.MEASUREMENT,
     ),
     FitbitSensorEntityDescription(
         key="sleep/minutesAfterWakeup",
         name="Minutes After Wakeup",
         native_unit_of_measurement=UnitOfTime.MINUTES,
-        icon="mdi:sleep",
+        icon=SLEEP,
         device_class=SensorDeviceClass.DURATION,
     ),
     FitbitSensorEntityDescription(
         key="sleep/minutesAsleep",
         name="Sleep Minutes Asleep",
         native_unit_of_measurement=UnitOfTime.MINUTES,
-        icon="mdi:sleep",
+        icon=SLEEP,
         device_class=SensorDeviceClass.DURATION,
     ),
     FitbitSensorEntityDescription(
         key="sleep/minutesAwake",
         name="Sleep Minutes Awake",
         native_unit_of_measurement=UnitOfTime.MINUTES,
-        icon="mdi:sleep",
+        icon=SLEEP,
         device_class=SensorDeviceClass.DURATION,
     ),
     FitbitSensorEntityDescription(
         key="sleep/minutesToFallAsleep",
         name="Sleep Minutes to Fall Asleep",
         native_unit_of_measurement=UnitOfTime.MINUTES,
-        icon="mdi:sleep",
+        icon=SLEEP,
         device_class=SensorDeviceClass.DURATION,
     ),
     FitbitSensorEntityDescription(
@@ -294,7 +300,7 @@ FITBIT_RESOURCES_LIST: Final[tuple[FitbitSensorEntityDescription, ...]] = (
 )
 
 FITBIT_RESOURCE_BATTERY = FitbitSensorEntityDescription(
-    key="devices/battery",
+    key=DEVICES_BATTERY,
     name="Battery",
     icon="mdi:battery",
 )
@@ -464,7 +470,7 @@ def setup_platform(
             for description in FITBIT_RESOURCES_LIST
             if description.key in monitored_resources
         ]
-        if "devices/battery" in monitored_resources:
+        if DEVICES_BATTERY in monitored_resources:
             entities.extend(
                 [
                     FitbitSensor(
@@ -628,8 +634,7 @@ class FitbitSensor(SensorEntity):
     def icon(self) -> str | None:
         """Icon to use in the frontend, if any."""
         if (
-            self.entity_description.key == "devices/battery"
-            and self.extra is not None
+            self.entity_description.key == DEVICES_BATTERY           and self.extra is not None
             and (extra_battery := self.extra.get("battery")) is not None
             and (battery_level := BATTERY_LEVELS.get(extra_battery)) is not None
         ):
@@ -651,7 +656,7 @@ class FitbitSensor(SensorEntity):
     def update(self) -> None:
         """Get the latest data from the Fitbit API and update the states."""
         resource_type = self.entity_description.key
-        if resource_type == "devices/battery" and self.extra is not None:
+        if resource_type == DEVICES_BATTERY and self.extra is not None:
             registered_devs: list[dict[str, Any]] = self.client.get_devices()
             device_id = self.extra.get("id")
             self.extra = list(

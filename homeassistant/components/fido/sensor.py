@@ -40,6 +40,12 @@ MESSAGES = "messages"
 
 DEFAULT_NAME = "Fido"
 
+DOWNLOAD = "mdi:download"
+MESSAGE_TEXT = "mdi:message-text"
+MESSAGE_IMAGE = "mdi:message-image"
+MESSAGE_ALERT = "mdi:message-alert"
+CELLPHONE = "mdi:cellphon"
+
 REQUESTS_TIMEOUT = 15
 MIN_TIME_BETWEEN_UPDATES = timedelta(minutes=15)
 
@@ -61,111 +67,111 @@ SENSOR_TYPES: tuple[SensorEntityDescription, ...] = (
         name="Data used",
         native_unit_of_measurement=UnitOfInformation.KILOBITS,
         device_class=SensorDeviceClass.DATA_SIZE,
-        icon="mdi:download",
+        icon=DOWNLOAD,
     ),
     SensorEntityDescription(
         key="data_limit",
         name="Data limit",
         native_unit_of_measurement=UnitOfInformation.KILOBITS,
         device_class=SensorDeviceClass.DATA_SIZE,
-        icon="mdi:download",
+        icon=DOWNLOAD,
     ),
     SensorEntityDescription(
         key="data_remaining",
         name="Data remaining",
         native_unit_of_measurement=UnitOfInformation.KILOBITS,
         device_class=SensorDeviceClass.DATA_SIZE,
-        icon="mdi:download",
+        icon=DOWNLOAD,
     ),
     SensorEntityDescription(
         key="text_used",
         name="Text used",
         native_unit_of_measurement=MESSAGES,
-        icon="mdi:message-text",
+        icon=MESSAGE_TEXT ,
     ),
     SensorEntityDescription(
         key="text_limit",
         name="Text limit",
         native_unit_of_measurement=MESSAGES,
-        icon="mdi:message-text",
+        icon=MESSAGE_TEXT ,
     ),
     SensorEntityDescription(
         key="text_remaining",
         name="Text remaining",
         native_unit_of_measurement=MESSAGES,
-        icon="mdi:message-text",
+        icon=MESSAGE_TEXT ,
     ),
     SensorEntityDescription(
         key="mms_used",
         name="MMS used",
         native_unit_of_measurement=MESSAGES,
-        icon="mdi:message-image",
+        icon=MESSAGE_IMAGE,
     ),
     SensorEntityDescription(
         key="mms_limit",
         name="MMS limit",
         native_unit_of_measurement=MESSAGES,
-        icon="mdi:message-image",
+        icon=MESSAGE_IMAGE,
     ),
     SensorEntityDescription(
         key="mms_remaining",
         name="MMS remaining",
         native_unit_of_measurement=MESSAGES,
-        icon="mdi:message-image",
+        icon=MESSAGE_IMAGE,
     ),
     SensorEntityDescription(
         key="text_int_used",
         name="International text used",
         native_unit_of_measurement=MESSAGES,
-        icon="mdi:message-alert",
+        icon=MESSAGE_ALERT,
     ),
     SensorEntityDescription(
         key="text_int_limit",
         name="International text limit",
         native_unit_of_measurement=MESSAGES,
-        icon="mdi:message-alert",
+        icon=MESSAGE_ALERT,
     ),
     SensorEntityDescription(
         key="text_int_remaining",
         name="International remaining",
         native_unit_of_measurement=MESSAGES,
-        icon="mdi:message-alert",
+        icon=MESSAGE_ALERT,
     ),
     SensorEntityDescription(
         key="talk_used",
         name="Talk used",
         native_unit_of_measurement=UnitOfTime.MINUTES,
-        icon="mdi:cellphone",
+        icon=CELLPHONE,
     ),
     SensorEntityDescription(
         key="talk_limit",
         name="Talk limit",
         native_unit_of_measurement=UnitOfTime.MINUTES,
-        icon="mdi:cellphone",
+        icon=CELLPHONE,
     ),
     SensorEntityDescription(
         key="talk_remaining",
         name="Talk remaining",
         native_unit_of_measurement=UnitOfTime.MINUTES,
-        icon="mdi:cellphone",
+        icon=CELLPHONE,
     ),
     SensorEntityDescription(
         key="other_talk_used",
         name="Other Talk used",
         native_unit_of_measurement=UnitOfTime.MINUTES,
-        icon="mdi:cellphone",
+        icon=CELLPHONE,
     ),
     SensorEntityDescription(
         key="other_talk_limit",
         name="Other Talk limit",
         native_unit_of_measurement=UnitOfTime.MINUTES,
-        icon="mdi:cellphone",
+        icon=CELLPHONE,
     ),
     SensorEntityDescription(
         key="other_talk_remaining",
         name="Other Talk remaining",
         native_unit_of_measurement=UnitOfTime.MINUTES,
-        icon="mdi:cellphone",
+        icon=CELLPHONE,
     ),
 )
 

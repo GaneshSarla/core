@@ -88,6 +88,15 @@ from .helpers import (
 
 DATA_UNSUBSCRIBE = "unsubs"
 
+INTERVIEW_STARTED = "interview started"
+INTERVIEW_COMPLETED = "interview completed"
+INTERVIEW_STAGE_COMPLETED = "interview stage completed"
+INTERVIEW_FAILED = "interview failed"
+NODE_ADDED = "node added"
+NODE_REMOVED = "node removed"
+FIRMWARE_UPDATE_PROGRESS = "firmware update progress"
+STATISTICS_UPDATED = "statistics update"
+
 # general API constants
 ID = "id"
 ENTRY_ID = "entry_id"
@@ -726,10 +735,10 @@ async def websocket_add_node(
     def node_added(event: dict) -> None:
         node = event["node"]
         interview_unsubs = [
-            node.on("interview started", forward_event),
-            node.on("interview completed", forward_event),
-            node.on("interview stage completed", forward_stage),
-            node.on("interview failed", forward_event),
+            node.on(INTERVIEW_STARTED, forward_event),
+            node.on(INTERVIEW_COMPLETED, forward_event),
+            node.on(INTERVIEW_STAGE_COMPLETED, forward_stage),
+            node.on(INTERVIEW_FAILED, forward_event),
         ]
         unsubs.extend(interview_unsubs)
         node_details = {
@@ -740,7 +749,7 @@ async def websocket_add_node(
         }
         connection.send_message(
             websocket_api.event_message(
-                msg[ID], {"event": "node added", "node": node_details}
+                msg[ID], {"event": NODE_ADDED, "node": node_details}
             )
         )
 
@@ -765,7 +774,7 @@ async def websocket_add_node(
         controller.on("inclusion stopped", forward_event),
         controller.on("validate dsk and enter pin", forward_dsk),
         controller.on("grant security classes", forward_requested_grant),
-        controller.on("node added", node_added),
+        controller.on(NODE_ADDED, node_added),
         async_dispatcher_connect(
             hass, EVENT_DEVICE_ADDED_TO_REGISTRY, device_registered
         ),
@@ -1144,7 +1153,7 @@ async def websocket_remove_node(
 
         connection.send_message(
             websocket_api.event_message(
-                msg[ID], {"event": "node removed", "node": node_details}
+                msg[ID], {"event": NODE_REMOVED, "node": node_details}
             )
         )
 
@@ -1153,7 +1162,7 @@ async def websocket_remove_node(
         controller.on("exclusion started", forward_event),
         controller.on("exclusion failed", forward_event),
         controller.on("exclusion stopped", forward_event),
-        controller.on("node removed", node_removed),
+        controller.on(NODE_REMOVED, node_removed),
     ]
 
     result = await controller.async_begin_exclusion(msg.get(STRATEGY))
@@ -1252,10 +1261,10 @@ async def websocket_replace_failed_node(
     def node_added(event: dict) -> None:
         node = event["node"]
         interview_unsubs = [
-            node.on("interview started", forward_event),
-            node.on("interview completed", forward_event),
-            node.on("interview stage completed", forward_stage),
-            node.on("interview failed", forward_event),
+            node.on(INTERVIEW_STARTED, forward_event),
+            node.on(INTERVIEW_COMPLETED, forward_event),
+            node.on(INTERVIEW_STAGE_COMPLETED, forward_stage),
+            node.on(INTERVIEW_FAILED, forward_event),
         ]
         unsubs.extend(interview_unsubs)
         node_details = {
@@ -1265,7 +1274,7 @@ async def websocket_replace_failed_node(
         }
         connection.send_message(
             websocket_api.event_message(
-                msg[ID], {"event": "node added", "node": node_details}
+                msg[ID], {"event": NODE_ADDED, "node": node_details}
             )
         )
 
@@ -1278,7 +1287,7 @@ async def websocket_replace_failed_node(
 
         connection.send_message(
             websocket_api.event_message(
-                msg[ID], {"event": "node removed", "node": node_details}
+                msg[ID], {"event": NODE_REMOVED, "node": node_details}
             )
         )
 
@@ -1303,8 +1312,8 @@ async def websocket_replace_failed_node(
         controller.on("inclusion stopped", forward_event),
         controller.on("validate dsk and enter pin", forward_dsk),
         controller.on("grant security classes", forward_requested_grant),
-        controller.on("node removed", node_removed),
-        controller.on("node added", node_added),
+        controller.on(NODE_REMOVED, node_removed),
+        controller.on(NODE_ADDED, node_added),
         async_dispatcher_connect(
             hass, EVENT_DEVICE_ADDED_TO_REGISTRY, device_registered
         ),
@@ -1365,12 +1374,12 @@ async def websocket_remove_failed_node(
 
         connection.send_message(
             websocket_api.event_message(
-                msg[ID], {"event": "node removed", "node": node_details}
+                msg[ID], {"event": NODE_REMOVED, "node": node_details}
             )
         )
 
     connection.subscriptions[msg["id"]] = async_cleanup
-    msg[DATA_UNSUBSCRIBE] = unsubs = [controller.on("node removed", node_removed)]
+    msg[DATA_UNSUBSCRIBE] = unsubs = [controller.on(NODE_REMOVED, node_removed)]
 
     await controller.async_remove_failed_node(node)
     connection.send_result(msg[ID])
@@ -1542,10 +1551,10 @@ async def websocket_refresh_node_info(
 
     connection.subscriptions[msg["id"]] = async_cleanup
     msg[DATA_UNSUBSCRIBE] = unsubs = [
-        node.on("interview started", forward_event),
-        node.on("interview completed", forward_event),
-        node.on("interview stage completed", forward_stage),
-        node.on("interview failed", forward_event),
+        node.on(INTERVIEW_STARTED, forward_event),
+        node.on(INTERVIEW_COMPLETED, forward_event),
+        node.on(INTERVIEW_STAGE_COMPLETED, forward_stage),
+        node.on(INTERVIEW_FAILED, forward_event),
     ]
 
     await node.async_refresh_info()
@@ -2055,12 +2064,12 @@ async def websocket_subscribe_firmware_update_status(
 
     if controller.own_node == node:
         msg[DATA_UNSUBSCRIBE] = unsubs = [
-            controller.on("firmware update progress", forward_controller_progress),
+            controller.on(FIRMWARE_UPDATE_PROGRESS, forward_controller_progress),
             controller.on("firmware update finished", forward_controller_finished),
         ]
     else:
         msg[DATA_UNSUBSCRIBE] = unsubs = [
-            node.on("firmware update progress", forward_node_progress),
+            node.on(FIRMWARE_UPDATE_PROGRESS, forward_node_progress),
             node.on("firmware update finished", forward_node_finished),
         ]
     connection.subscriptions[msg["id"]] = async_cleanup
@@ -2073,7 +2082,7 @@ async def websocket_subscribe_firmware_update_status(
             websocket_api.event_message(
                 msg[ID],
                 {
-                    "event": "firmware update progress",
+                    "event": FIRMWARE_UPDATE_PROGRESS,
                     **_get_controller_firmware_update_progress_dict(
                         controller_progress
                     ),
@@ -2087,7 +2096,7 @@ async def websocket_subscribe_firmware_update_status(
             websocket_api.event_message(
                 msg[ID],
                 {
-                    "event": "firmware update progress",
+                    "event": FIRMWARE_UPDATE_PROGRESS,
                     **_get_node_firmware_update_progress_dict(node_progress),
                 },
             )
@@ -2321,7 +2330,7 @@ async def websocket_subscribe_controller_statistics(
     controller = driver.controller
 
     msg[DATA_UNSUBSCRIBE] = unsubs = [
-        controller.on("statistics updated", forward_stats)
+        controller.on(STATISTICS_UPDATED, forward_stats)
     ]
     connection.subscriptions[msg["id"]] = async_cleanup
 
@@ -2330,7 +2339,7 @@ async def websocket_subscribe_controller_statistics(
         websocket_api.event_message(
             msg[ID],
             {
-                "event": "statistics updated",
+                "event": STATISTICS_UPDATED,
                 "source": "controller",
                 **_get_controller_statistics_dict(controller.statistics),
             },
@@ -2414,7 +2423,7 @@ async def websocket_subscribe_node_statistics(
             )
         )
 
-    msg[DATA_UNSUBSCRIBE] = unsubs = [node.on("statistics updated", forward_stats)]
+    msg[DATA_UNSUBSCRIBE] = unsubs = [node.on(STATISTICS_UPDATED, forward_stats)]
     connection.subscriptions[msg["id"]] = async_cleanup
 
     connection.send_result(msg[ID])
@@ -2422,7 +2431,7 @@ async def websocket_subscribe_node_statistics(
         websocket_api.event_message(
             msg[ID],
             {
-                "event": "statistics updated",
+                "event": STATISTICS_UPDATED,
                 "source": "node",
                 "nodeId": node.node_id,
                 **_get_node_statistics_dict(hass, node.statistics),

@@ -32,6 +32,14 @@ from .helper import PlenticoreDataFormatter, ProcessDataUpdateCoordinator
 
 _LOGGER = logging.getLogger(__name__)
 
+LOCAL_DEVICES = "devices:local"
+LOCAL_DEVICES_PV1 = "devices:local:pv1"
+LOCAL_DEVICES_PV2 = "devices:local:pv2"
+LOCAL_DEVICES_PV3 = "devices:local:pv3"
+LOCAL_DEVICES_BATTERY = "devices:local:battery"
+ENERGY_FLOW_STATISTIC = "scb:statistic:EnergyFlow"
+CHART_DONUT = "mdi:chart-donu"
+
 
 @dataclass
 class PlenticoreRequiredKeysMixin:
@@ -50,14 +58,14 @@ class PlenticoreSensorEntityDescription(
 
 SENSOR_PROCESS_DATA = [
     PlenticoreSensorEntityDescription(
-        module_id="devices:local",
+        module_id=LOCAL_DEVICES,
         key="Inverter:State",
         name="Inverter State",
         icon="mdi:state-machine",
         formatter="format_inverter_state",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local",
+        module_id=LOCAL_DEVICES,
         key="Dc_P",
         name="Solar Power",
         native_unit_of_measurement=UnitOfPower.WATT,
@@ -67,7 +75,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local",
+        module_id=LOCAL_DEVICES,
         key="Grid_P",
         name="Grid Power",
         native_unit_of_measurement=UnitOfPower.WATT,
@@ -77,7 +85,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local",
+        module_id=LOCAL_DEVICES,
         key="HomeBat_P",
         name="Home Power from Battery",
         native_unit_of_measurement=UnitOfPower.WATT,
@@ -85,7 +93,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local",
+        module_id=LOCAL_DEVICES,
         key="HomeGrid_P",
         name="Home Power from Grid",
         native_unit_of_measurement=UnitOfPower.WATT,
@@ -94,7 +102,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local",
+        module_id=LOCAL_DEVICES,
         key="HomeOwn_P",
         name="Home Power from Own",
         native_unit_of_measurement=UnitOfPower.WATT,
@@ -103,7 +111,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local",
+        module_id=LOCAL_DEVICES,
         key="HomePv_P",
         name="Home Power from PV",
         native_unit_of_measurement=UnitOfPower.WATT,
@@ -112,7 +120,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local",
+        module_id=LOCAL_DEVICES,
         key="Home_P",
         name="Home Power",
         native_unit_of_measurement=UnitOfPower.WATT,
@@ -131,7 +139,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local:pv1",
+        module_id=LOCAL_DEVICES_PV1,
         key="P",
         name="DC1 Power",
         native_unit_of_measurement=UnitOfPower.WATT,
@@ -140,7 +148,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local:pv1",
+        module_id=LOCAL_DEVICES_PV1,
         key="U",
         name="DC1 Voltage",
         native_unit_of_measurement=UnitOfElectricPotential.VOLT,
@@ -149,7 +157,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local:pv1",
+        module_id=LOCAL_DEVICES_PV1,
         key="I",
         name="DC1 Current",
         native_unit_of_measurement=UnitOfElectricCurrent.AMPERE,
@@ -158,7 +166,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_float",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local:pv2",
+        module_id=LOCAL_DEVICES_PV2,
         key="P",
         name="DC2 Power",
         native_unit_of_measurement=UnitOfPower.WATT,
@@ -167,7 +175,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local:pv2",
+        module_id=LOCAL_DEVICES_PV2,
         key="U",
         name="DC2 Voltage",
         native_unit_of_measurement=UnitOfElectricPotential.VOLT,
@@ -176,7 +184,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local:pv2",
+        module_id=LOCAL_DEVICES_PV2,
         key="I",
         name="DC2 Current",
         native_unit_of_measurement=UnitOfElectricCurrent.AMPERE,
@@ -185,7 +193,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_float",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local:pv3",
+        module_id=LOCAL_DEVICES_PV3,
         key="P",
         name="DC3 Power",
         native_unit_of_measurement=UnitOfPower.WATT,
@@ -194,7 +202,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local:pv3",
+        module_id=LOCAL_DEVICES_PV3,
         key="U",
         name="DC3 Voltage",
         native_unit_of_measurement=UnitOfElectricPotential.VOLT,
@@ -203,7 +211,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local:pv3",
+        module_id=LOCAL_DEVICES_PV3,
         key="I",
         name="DC3 Current",
         native_unit_of_measurement=UnitOfElectricCurrent.AMPERE,
@@ -212,7 +220,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_float",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local",
+        module_id=LOCAL_DEVICES,
         key="PV2Bat_P",
         name="PV to Battery Power",
         native_unit_of_measurement=UnitOfPower.WATT,
@@ -221,14 +229,14 @@ SENSOR_PROCESS_DATA = [
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local",
+        module_id=LOCAL_DEVICES,
         key="EM_State",
         name="Energy Manager State",
         icon="mdi:state-machine",
         formatter="format_em_manager_state",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local:battery",
+        module_id=LOCAL_DEVICES_BATTERY,
         key="Cycles",
         name="Battery Cycles",
         icon="mdi:recycle",
@@ -236,7 +244,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local:battery",
+        module_id=LOCAL_DEVICES_BATTERY,
         key="P",
         name="Battery Power",
         native_unit_of_measurement=UnitOfPower.WATT,
@@ -245,7 +253,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="devices:local:battery",
+        module_id=LOCAL_DEVICES_BATTERY,
         key="SoC",
         name="Battery SoC",
         native_unit_of_measurement=PERCENTAGE,
@@ -253,73 +261,73 @@ SENSOR_PROCESS_DATA = [
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:Autarky:Day",
         name="Autarky Day",
         native_unit_of_measurement=PERCENTAGE,
-        icon="mdi:chart-donut",
+        icon=CHART_DONUT,
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:Autarky:Month",
         name="Autarky Month",
         native_unit_of_measurement=PERCENTAGE,
-        icon="mdi:chart-donut",
+        icon=CHART_DONUT,
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:Autarky:Total",
         name="Autarky Total",
         native_unit_of_measurement=PERCENTAGE,
-        icon="mdi:chart-donut",
+        icon=CHART_DONUT,
         state_class=SensorStateClass.MEASUREMENT,
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:Autarky:Year",
         name="Autarky Year",
         native_unit_of_measurement=PERCENTAGE,
-        icon="mdi:chart-donut",
+        icon=CHART_DONUT,
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:OwnConsumptionRate:Day",
         name="Own Consumption Rate Day",
         native_unit_of_measurement=PERCENTAGE,
-        icon="mdi:chart-donut",
+        icon=CHART_DONUT,
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:OwnConsumptionRate:Month",
         name="Own Consumption Rate Month",
         native_unit_of_measurement=PERCENTAGE,
-        icon="mdi:chart-donut",
+        icon=CHART_DONUT,
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:OwnConsumptionRate:Total",
         name="Own Consumption Rate Total",
         native_unit_of_measurement=PERCENTAGE,
-        icon="mdi:chart-donut",
+        icon=CHART_DONUT,
         state_class=SensorStateClass.MEASUREMENT,
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:OwnConsumptionRate:Year",
         name="Own Consumption Rate Year",
         native_unit_of_measurement=PERCENTAGE,
-        icon="mdi:chart-donut",
+        icon=CHART_DONUT,
         formatter="format_round",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyHome:Day",
         name="Home Consumption Day",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -327,7 +335,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyHome:Month",
         name="Home Consumption Month",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -335,7 +343,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyHome:Year",
         name="Home Consumption Year",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -343,7 +351,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyHome:Total",
         name="Home Consumption Total",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -352,7 +360,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyHomeBat:Day",
         name="Home Consumption from Battery Day",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -360,7 +368,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyHomeBat:Month",
         name="Home Consumption from Battery Month",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -368,7 +376,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyHomeBat:Year",
         name="Home Consumption from Battery Year",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -376,7 +384,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyHomeBat:Total",
         name="Home Consumption from Battery Total",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -385,7 +393,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyHomeGrid:Day",
         name="Home Consumption from Grid Day",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -393,7 +401,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyHomeGrid:Month",
         name="Home Consumption from Grid Month",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -401,7 +409,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyHomeGrid:Year",
         name="Home Consumption from Grid Year",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -409,7 +417,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyHomeGrid:Total",
         name="Home Consumption from Grid Total",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -418,7 +426,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyHomePv:Day",
         name="Home Consumption from PV Day",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -426,7 +434,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyHomePv:Month",
         name="Home Consumption from PV Month",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -434,7 +442,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyHomePv:Year",
         name="Home Consumption from PV Year",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -442,7 +450,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyHomePv:Total",
         name="Home Consumption from PV Total",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -451,7 +459,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyPv1:Day",
         name="Energy PV1 Day",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -459,7 +467,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyPv1:Month",
         name="Energy PV1 Month",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -467,7 +475,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyPv1:Year",
         name="Energy PV1 Year",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -475,7 +483,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyPv1:Total",
         name="Energy PV1 Total",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -484,7 +492,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyPv2:Day",
         name="Energy PV2 Day",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -492,7 +500,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyPv2:Month",
         name="Energy PV2 Month",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -500,7 +508,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyPv2:Year",
         name="Energy PV2 Year",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -508,7 +516,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyPv2:Total",
         name="Energy PV2 Total",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -517,7 +525,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyPv3:Day",
         name="Energy PV3 Day",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -525,7 +533,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyPv3:Month",
         name="Energy PV3 Month",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -533,7 +541,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyPv3:Year",
         name="Energy PV3 Year",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -541,7 +549,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyPv3:Total",
         name="Energy PV3 Total",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -550,7 +558,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:Yield:Day",
         name="Energy Yield Day",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -559,7 +567,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:Yield:Month",
         name="Energy Yield Month",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -567,7 +575,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:Yield:Year",
         name="Energy Yield Year",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -575,7 +583,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:Yield:Total",
         name="Energy Yield Total",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -584,7 +592,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyChargeGrid:Day",
         name="Battery Charge from Grid Day",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -592,7 +600,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyChargeGrid:Month",
         name="Battery Charge from Grid Month",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -600,7 +608,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyChargeGrid:Year",
         name="Battery Charge from Grid Year",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -608,7 +616,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyChargeGrid:Total",
         name="Battery Charge from Grid Total",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -617,7 +625,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyChargePv:Day",
         name="Battery Charge from PV Day",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -625,7 +633,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyChargePv:Month",
         name="Battery Charge from PV Month",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -633,7 +641,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyChargePv:Year",
         name="Battery Charge from PV Year",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -641,7 +649,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyChargePv:Total",
         name="Battery Charge from PV Total",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -650,7 +658,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyDischargeGrid:Day",
         name="Energy Discharge to Grid Day",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -658,7 +666,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyDischargeGrid:Month",
         name="Energy Discharge to Grid Month",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -666,7 +674,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyDischargeGrid:Year",
         name="Energy Discharge to Grid Year",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
@@ -674,7 +682,7 @@ SENSOR_PROCESS_DATA = [
         formatter="format_energy",
     ),
     PlenticoreSensorEntityDescription(
-        module_id="scb:statistic:EnergyFlow",
+        module_id=ENERGY_FLOW_STATISTIC,
         key="Statistic:EnergyDischargeGrid:Total",
         name="Energy Discharge to Grid Total",
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,

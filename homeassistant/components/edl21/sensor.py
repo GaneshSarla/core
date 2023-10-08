@@ -41,6 +41,8 @@ from .const import (
 )
 
 MIN_TIME_BETWEEN_UPDATES = timedelta(seconds=60)
+FLASH = "mdi:flash"
+SINE_WAVE = "mdi:sine-wav"
 
 # OBIS format: A-B:C.D.E*F
 SENSOR_TYPES: tuple[SensorEntityDescription, ...] = (
@@ -51,25 +53,25 @@ SENSOR_TYPES: tuple[SensorEntityDescription, ...] = (
     SensorEntityDescription(
         key="1-0:0.0.0*255",
         translation_key="ownership_id",
-        icon="mdi:flash",
+        icon=FLASH,
         entity_registry_enabled_default=False,
     ),
     # E=9: Electrity ID
     SensorEntityDescription(
         key="1-0:0.0.9*255",
         translation_key="electricity_id",
-        icon="mdi:flash",
+        icon=FLASH,
     ),
     # D=2: Program entries
     SensorEntityDescription(
         key="1-0:0.2.0*0",
         translation_key="configuration_program_version_number",
-        icon="mdi:flash",
+        icon=FLASH,
     ),
     SensorEntityDescription(
         key="1-0:0.2.0*1",
         translation_key="firmware_version_number",
-        icon="mdi:flash",
+        icon=FLASH,
     ),
     # C=1: Active power +
     # D=7: Current value
@@ -138,7 +140,7 @@ SENSOR_TYPES: tuple[SensorEntityDescription, ...] = (
     SensorEntityDescription(
         key="1-0:14.7.0*255",
         translation_key="supply_frequency",
-        icon="mdi:sine-wave",
+        icon=SINE_WAVE,
     ),
     # C=15: Active power absolute
     # D=7: Instantaneous value
@@ -249,38 +251,38 @@ SENSOR_TYPES: tuple[SensorEntityDescription, ...] = (
     SensorEntityDescription(
         key="1-0:81.7.1*255",
         translation_key="u_l2_u_l1_phase_angle",
-        icon="mdi:sine-wave",
+        icon=SINE_WAVE,
     ),
     SensorEntityDescription(
         key="1-0:81.7.2*255",
         translation_key="u_l3_u_l1_phase_angle",
-        icon="mdi:sine-wave",
+        icon=SINE_WAVE,
     ),
     SensorEntityDescription(
         key="1-0:81.7.4*255",
         translation_key="u_l1_i_l1_phase_angle",
-        icon="mdi:sine-wave",
+        icon=SINE_WAVE,
     ),
     SensorEntityDescription(
         key="1-0:81.7.15*255",
         translation_key="u_l2_i_l2_phase_angle",
-        icon="mdi:sine-wave",
+        icon=SINE_WAVE,
     ),
     SensorEntityDescription(
         key="1-0:81.7.26*255",
         translation_key="u_l3_i_l3_phase_angle",
-        icon="mdi:sine-wave",
+        icon=SINE_WAVE,
     ),
     # C=96: Electricity-related service entries
     SensorEntityDescription(
         key="1-0:96.1.0*255",
         translation_key="metering_point_id_1",
-        icon="mdi:flash",
+        icon=FLASH,
     ),
     SensorEntityDescription(
         key="1-0:96.5.0*255",
         translation_key="internal_operating_status",
-        icon="mdi:flash",
+        icon=FLASH,
     ),
 )
 

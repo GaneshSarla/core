@@ -39,6 +39,8 @@ _LOGGER = logging.getLogger(__name__)
 PRICE = "CAD"
 
 DEFAULT_NAME = "EBox"
+DOWNLOAD_ICON = "mdi:download"
+UPLOAD_ICON = "mdi:uploa"
 
 REQUESTS_TIMEOUT = 15
 SCAN_INTERVAL = timedelta(minutes=15)
@@ -63,7 +65,7 @@ SENSOR_TYPES: tuple[SensorEntityDescription, ...] = (
         name="Data limit",
         native_unit_of_measurement=UnitOfInformation.GIGABITS,
         device_class=SensorDeviceClass.DATA_SIZE,
-        icon="mdi:download",
+        icon=DOWNLOAD_ICON,
     ),
     SensorEntityDescription(
         key="days_left",
@@ -76,63 +78,63 @@ SENSOR_TYPES: tuple[SensorEntityDescription, ...] = (
         name="Download before offpeak",
         native_unit_of_measurement=UnitOfInformation.GIGABITS,
         device_class=SensorDeviceClass.DATA_SIZE,
-        icon="mdi:download",
+        icon=DOWNLOAD_ICON,
     ),
     SensorEntityDescription(
         key="before_offpeak_upload",
         name="Upload before offpeak",
         native_unit_of_measurement=UnitOfInformation.GIGABITS,
         device_class=SensorDeviceClass.DATA_SIZE,
-        icon="mdi:upload",
+        icon=UPLOAD_ICON,
     ),
     SensorEntityDescription(
         key="before_offpeak_total",
         name="Total before offpeak",
         native_unit_of_measurement=UnitOfInformation.GIGABITS,
         device_class=SensorDeviceClass.DATA_SIZE,
-        icon="mdi:download",
+        icon=DOWNLOAD_ICON,
     ),
     SensorEntityDescription(
         key="offpeak_download",
         name="Offpeak download",
         native_unit_of_measurement=UnitOfInformation.GIGABITS,
         device_class=SensorDeviceClass.DATA_SIZE,
-        icon="mdi:download",
+        icon=DOWNLOAD_ICON,
     ),
     SensorEntityDescription(
         key="offpeak_upload",
         name="Offpeak Upload",
         native_unit_of_measurement=UnitOfInformation.GIGABITS,
         device_class=SensorDeviceClass.DATA_SIZE,
-        icon="mdi:upload",
+        icon=UPLOAD_ICON,
     ),
     SensorEntityDescription(
         key="offpeak_total",
         name="Offpeak Total",
         native_unit_of_measurement=UnitOfInformation.GIGABITS,
         device_class=SensorDeviceClass.DATA_SIZE,
-        icon="mdi:download",
+        icon=DOWNLOAD_ICON,
     ),
     SensorEntityDescription(
         key="download",
         name="Download",
         native_unit_of_measurement=UnitOfInformation.GIGABITS,
         device_class=SensorDeviceClass.DATA_SIZE,
-        icon="mdi:download",
+        icon=DOWNLOAD_ICON,
     ),
     SensorEntityDescription(
         key="upload",
         name="Upload",
         native_unit_of_measurement=UnitOfInformation.GIGABITS,
         device_class=SensorDeviceClass.DATA_SIZE,
-        icon="mdi:upload",
+        icon=UPLOAD_ICON,
     ),
     SensorEntityDescription(
         key="total",
         name="Total",
         native_unit_of_measurement=UnitOfInformation.GIGABITS,
         device_class=SensorDeviceClass.DATA_SIZE,
-        icon="mdi:download",
+        icon=DOWNLOAD_ICON,
     ),
 )
 

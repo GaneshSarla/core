@@ -8,6 +8,13 @@ from homeassistant.const import Platform
 
 UPNP_ST = "urn:schemas-upnp-org:device:ZonePlayer:1"
 
+ALBUM_MUSICALBUM = "object.container.album.musicAlbum"
+GENRE_MUSICGENRE = "object.container.genre.musicGenre"
+PERSON_COMPOSER = "object.container.person.composer"
+PERSON_MUSICARTIST = "object.container.person.musicArtist"
+PLAYLISTCONTAINER_SAMEARTIST = "object.container.playlistContainer.sameArtist"
+AUDIOITEM_MUSICTRACK = "object.item.audioItem.musicTrac"
+
 DOMAIN = "sonos"
 DATA_SONOS = "sonos_media_player"
 DATA_SONOS_DISCOVERY_MANAGER = "sonos_discovery_manager"
@@ -57,14 +64,14 @@ SONOS_TO_MEDIA_CLASSES = {
     SONOS_GENRE: MediaClass.GENRE,
     SONOS_PLAYLISTS: MediaClass.PLAYLIST,
     SONOS_TRACKS: MediaClass.TRACK,
-    "object.container.album.musicAlbum": MediaClass.ALBUM,
-    "object.container.genre.musicGenre": MediaClass.PLAYLIST,
-    "object.container.person.composer": MediaClass.PLAYLIST,
-    "object.container.person.musicArtist": MediaClass.ARTIST,
-    "object.container.playlistContainer.sameArtist": MediaClass.ARTIST,
+    ALBUM_MUSICALBUM: MediaClass.ALBUM,
+    GENRE_MUSICGENRE: MediaClass.PLAYLIST,
+    PERSON_COMPOSER: MediaClass.PLAYLIST,
+    PERSON_MUSICARTIST: MediaClass.ARTIST,
+    PLAYLISTCONTAINER_SAMEARTIST: MediaClass.ARTIST,
     "object.container.playlistContainer": MediaClass.PLAYLIST,
     "object.item": MediaClass.TRACK,
-    "object.item.audioItem.musicTrack": MediaClass.TRACK,
+    AUDIOITEM_MUSICTRACK: MediaClass.TRACK,
     "object.item.audioItem.audioBroadcast": MediaClass.GENRE,
 }
 
@@ -76,13 +83,13 @@ SONOS_TO_MEDIA_TYPES = {
     SONOS_GENRE: MediaType.GENRE,
     SONOS_PLAYLISTS: MediaType.PLAYLIST,
     SONOS_TRACKS: MediaType.TRACK,
-    "object.container.album.musicAlbum": MediaType.ALBUM,
-    "object.container.genre.musicGenre": MediaType.PLAYLIST,
-    "object.container.person.composer": MediaType.PLAYLIST,
-    "object.container.person.musicArtist": MediaType.ARTIST,
-    "object.container.playlistContainer.sameArtist": MediaType.ARTIST,
+    ALBUM_MUSICALBUM: MediaType.ALBUM,
+    GENRE_MUSICGENRE: MediaType.PLAYLIST,
+    PERSON_COMPOSER: MediaType.PLAYLIST,
+    PERSON_MUSICARTIST: MediaType.ARTIST,
+    PLAYLISTCONTAINER_SAMEARTIST: MediaType.ARTIST,
     "object.container.playlistContainer": MediaType.PLAYLIST,
-    "object.item.audioItem.musicTrack": MediaType.TRACK,
+    AUDIOITEM_MUSICTRACK: MediaType.TRACK,
 }
 
 MEDIA_TYPES_TO_SONOS: dict[MediaType | str, str] = {
@@ -103,14 +110,14 @@ SONOS_TYPES_MAPPING = {
     "A:GENRE": SONOS_GENRE,
     "A:PLAYLISTS": SONOS_PLAYLISTS,
     "A:TRACKS": SONOS_TRACKS,
-    "object.container.album.musicAlbum": SONOS_ALBUM,
-    "object.container.genre.musicGenre": SONOS_GENRE,
-    "object.container.person.composer": SONOS_COMPOSER,
-    "object.container.person.musicArtist": SONOS_ALBUM_ARTIST,
-    "object.container.playlistContainer.sameArtist": SONOS_ARTIST,
+    ALBUM_MUSICALBUM: SONOS_ALBUM,
+    GENRE_MUSICGENRE: SONOS_GENRE,
+    PERSON_COMPOSER: SONOS_COMPOSER,
+    PERSON_MUSICARTIST: SONOS_ALBUM_ARTIST,
+    PLAYLISTCONTAINER_SAMEARTIST: SONOS_ARTIST,
     "object.container.playlistContainer": SONOS_PLAYLISTS,
     "object.item": SONOS_OTHER_ITEM,
-    "object.item.audioItem.musicTrack": SONOS_TRACKS,
+    AUDIOITEM_MUSICTRACK: SONOS_TRACKS,
     "object.item.audioItem.audioBroadcast": SONOS_RADIO,
 }
 

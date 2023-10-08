@@ -9,6 +9,10 @@ from homeassistant.const import (
 )
 
 DOMAIN = "ebusd"
+TOGGLE_SWITCH = "mdi:toggle-switch"
+TIMER_OUTLINE = "mdi:timer-outline"
+FLASH = "mdi:flas"
+AV_TIMER = "mdi:av-timer"
 
 #  SensorTypes from ebusdpy module :
 #  0='decimal', 1='time-schedule', 2='switch', 3='string', 4='value;status'
@@ -36,7 +40,7 @@ SENSOR_TYPES = {
             0,
             SensorDeviceClass.TEMPERATURE,
         ],
-        "PumpStatus": ["Hc1PumpStatus", None, "mdi:toggle-switch", 2, None],
+        "PumpStatus": ["Hc1PumpStatus", None, TOGGLE_SWITCH, 2, None],
         "HCSummerTemperatureLimit": [
             "Hc1SummerTempLimit",
             UnitOfTemperature.CELSIUS,
@@ -65,13 +69,13 @@ SENSOR_TYPES = {
             0,
             SensorDeviceClass.TEMPERATURE,
         ],
-        "HWTimerMonday": ["hwcTimer.Monday", None, "mdi:timer-outline", 1, None],
-        "HWTimerTuesday": ["hwcTimer.Tuesday", None, "mdi:timer-outline", 1, None],
-        "HWTimerWednesday": ["hwcTimer.Wednesday", None, "mdi:timer-outline", 1, None],
-        "HWTimerThursday": ["hwcTimer.Thursday", None, "mdi:timer-outline", 1, None],
-        "HWTimerFriday": ["hwcTimer.Friday", None, "mdi:timer-outline", 1, None],
-        "HWTimerSaturday": ["hwcTimer.Saturday", None, "mdi:timer-outline", 1, None],
-        "HWTimerSunday": ["hwcTimer.Sunday", None, "mdi:timer-outline", 1, None],
+        "HWTimerMonday": ["hwcTimer.Monday", None, TIMER_OUTLINE, 1, None],
+        "HWTimerTuesday": ["hwcTimer.Tuesday", None, TIMER_OUTLINE, 1, None],
+        "HWTimerWednesday": ["hwcTimer.Wednesday", None, TIMER_OUTLINE, 1, None],
+        "HWTimerThursday": ["hwcTimer.Thursday", None, TIMER_OUTLINE, 1, None],
+        "HWTimerFriday": ["hwcTimer.Friday", None, TIMER_OUTLINE, 1, None],
+        "HWTimerSaturday": ["hwcTimer.Saturday", None, TIMER_OUTLINE, 1, None],
+        "HWTimerSunday": ["hwcTimer.Sunday", None, TIMER_OUTLINE, 1, None],
         "HWOperativeMode": ["HwcOpMode", None, "mdi:math-compass", 3, None],
         "WaterPressure": [
             "WaterPressure",
@@ -116,19 +120,19 @@ SENSOR_TYPES = {
             0,
             SensorDeviceClass.TEMPERATURE,
         ],
-        "Zone1TimerMonday": ["z1Timer.Monday", None, "mdi:timer-outline", 1, None],
-        "Zone1TimerTuesday": ["z1Timer.Tuesday", None, "mdi:timer-outline", 1, None],
+        "Zone1TimerMonday": ["z1Timer.Monday", None, TIMER_OUTLINE, 1, None],
+        "Zone1TimerTuesday": ["z1Timer.Tuesday", None, TIMER_OUTLINE, 1, None],
         "Zone1TimerWednesday": [
             "z1Timer.Wednesday",
             None,
-            "mdi:timer-outline",
+            TIMER_OUTLINE,
             1,
             None,
         ],
-        "Zone1TimerThursday": ["z1Timer.Thursday", None, "mdi:timer-outline", 1, None],
-        "Zone1TimerFriday": ["z1Timer.Friday", None, "mdi:timer-outline", 1, None],
-        "Zone1TimerSaturday": ["z1Timer.Saturday", None, "mdi:timer-outline", 1, None],
-        "Zone1TimerSunday": ["z1Timer.Sunday", None, "mdi:timer-outline", 1, None],
+        "Zone1TimerThursday": ["z1Timer.Thursday", None, TIMER_OUTLINE, 1, None],
+        "Zone1TimerFriday": ["z1Timer.Friday", None, TIMER_OUTLINE, 1, None],
+        "Zone1TimerSaturday": ["z1Timer.Saturday", None, TIMER_OUTLINE, 1, None],
+        "Zone1TimerSunday": ["z1Timer.Sunday", None, TIMER_OUTLINE, 1, None],
         "Zone1OperativeMode": ["z1OpMode", None, "mdi:math-compass", 3, None],
         "ContinuosHeating": [
             "ContinuosHeating",
@@ -140,14 +144,14 @@ SENSOR_TYPES = {
         "PowerEnergyConsumptionLastMonth": [
             "PrEnergySumHcLastMonth",
             UnitOfEnergy.KILO_WATT_HOUR,
-            "mdi:flash",
+            FLASH,
             0,
             SensorDeviceClass.ENERGY,
         ],
         "PowerEnergyConsumptionThisMonth": [
             "PrEnergySumHcThisMonth",
             UnitOfEnergy.KILO_WATT_HOUR,
-            "mdi:flash",
+            FLASH,
             0,
             SensorDeviceClass.ENERGY,
         ],
@@ -207,21 +211,21 @@ SENSOR_TYPES = {
         "AverageIgnitionTime": [
             "averageIgnitiontime",
             UnitOfTime.SECONDS,
-            "mdi:av-timer",
+            AV_TIMER,
             0,
             SensorDeviceClass.DURATION,
         ],
         "MaximumIgnitionTime": [
             "maxIgnitiontime",
             UnitOfTime.SECONDS,
-            "mdi:av-timer",
+            AV_TIMER,
             0,
             SensorDeviceClass.DURATION,
         ],
         "MinimumIgnitionTime": [
             "minIgnitiontime",
             UnitOfTime.SECONDS,
-            "mdi:av-timer",
+            AV_TIMER,
             0,
             SensorDeviceClass.DURATION,
         ],
@@ -232,8 +236,8 @@ SENSOR_TYPES = {
             4,
             SensorDeviceClass.TEMPERATURE,
         ],
-        "CentralHeatingPump": ["WP", None, "mdi:toggle-switch", 2, None],
-        "HeatingSwitch": ["HeatingSwitch", None, "mdi:toggle-switch", 2, None],
+        "CentralHeatingPump": ["WP", None, TOGGLE_SWITCH, 2, None],
+        "HeatingSwitch": ["HeatingSwitch", None, TOGGLE_SWITCH, 2, None],
         "DesiredFlowTemperature": [
             "FlowTempDesired",
             UnitOfTemperature.CELSIUS,
@@ -248,26 +252,26 @@ SENSOR_TYPES = {
             4,
             SensorDeviceClass.TEMPERATURE,
         ],
-        "Flame": ["Flame", None, "mdi:toggle-switch", 2, None],
+        "Flame": ["Flame", None, TOGGLE_SWITCH, 2, None],
         "PowerEnergyConsumptionHeatingCircuit": [
             "PrEnergySumHc1",
             UnitOfEnergy.KILO_WATT_HOUR,
-            "mdi:flash",
+            FLASH,
             0,
             SensorDeviceClass.ENERGY,
         ],
         "PowerEnergyConsumptionHotWaterCircuit": [
             "PrEnergySumHwc1",
             UnitOfEnergy.KILO_WATT_HOUR,
-            "mdi:flash",
+            FLASH,
             0,
             SensorDeviceClass.ENERGY,
         ],
-        "RoomThermostat": ["DCRoomthermostat", None, "mdi:toggle-switch", 2, None],
+        "RoomThermostat": ["DCRoomthermostat", None, TOGGLE_SWITCH, 2, None],
         "HeatingPartLoad": [
             "PartloadHcKW",
             UnitOfEnergy.KILO_WATT_HOUR,
-            "mdi:flash",
+            FLASH,
             0,
             SensorDeviceClass.ENERGY,
         ],

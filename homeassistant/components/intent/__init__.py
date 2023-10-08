@@ -68,8 +68,8 @@ class OnOffIntentHandler(intent.ServiceIntentHandler):
         hass = intent_obj.hass
 
         if state.domain == COVER_DOMAIN:
-            # on = open
-            # off = close
+           #Determine the appropriate cover service based on intent
+           #If intent is to turn on, open the cover; otherwise, close it
             await self._run_then_background(
                 hass.async_create_task(
                     hass.services.async_call(

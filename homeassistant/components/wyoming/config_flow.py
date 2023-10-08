@@ -50,10 +50,10 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 errors={"base": "cannot_connect"},
             )
 
-        # ASR = automated speech recognition (speech-to-text)
+       # List of installed ASR (Automated Speech Recognition) systems
         asr_installed = [asr for asr in service.info.asr if asr.installed]
 
-        # TTS = text-to-speech
+        # List of installed TTS (Text-to-Speech) systems
         tts_installed = [tts for tts in service.info.tts if tts.installed]
 
         # wake-word-detection
